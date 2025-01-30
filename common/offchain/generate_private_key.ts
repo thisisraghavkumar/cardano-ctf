@@ -1,8 +1,8 @@
-import { Lucid } from "https://deno.land/x/lucid@0.10.7/mod.ts";
+import { Lucid, Crypto } from "https://deno.land/x/lucid/mod.ts";
 
-const lucid = await Lucid.new(undefined, "Preview");
+const lucid = new Lucid(undefined, "Preview");
 
-const privateKey = lucid.utils.generatePrivateKey();
+const privateKey = Crypto.generatePrivateKey();
 await Deno.writeTextFile("key.sk", privateKey);
 const address = await lucid
   .selectWalletFromPrivateKey(privateKey)
